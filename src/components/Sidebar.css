@@ -1,11 +1,3 @@
-button {
-    background: none;
-    border: none;
-    color: #08c;
-    font-size: 16px;
-    cursor: pointer;
-}
-
 .app-sidebar {
     width: 30%;
     height: 100vh;
@@ -41,7 +33,7 @@ button {
 }
 
 .app-sidebar-note:hover {
-    background-color: #f1f0f0;
+    background-color: #363636;
 }
 
 .sidebar-note-title {
