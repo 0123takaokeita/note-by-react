@@ -1,7 +1,6 @@
 .app-main {
     width: 70%;
     height: 100vh;
-
 }
 
 .app-main-note-edit,
@@ -43,4 +42,13 @@
 .markdown-preview {
     padding: 0 24px 24px 24px;
     line-height: 2rem;
+}
+
+.no-active-note {
+    width: 70%;
+    height: 100vh ;
+    line-height: 100vh;
+    text-align: center;
+    font-size: 2rem;
+    color: #61424A;
 }

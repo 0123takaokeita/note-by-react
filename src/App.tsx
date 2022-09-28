@@ -13,7 +13,7 @@ export type Note = {
 
 function App() {
   const [notes, setNote] = useState<Note[]>([])
-  const [activeNote, setActiveNote] = useState<string | boolean>(false)
+  const [activeNote, setActiveNote] = useState('')
 
   const onAddNote = (): void => {
     const newNote: Note = {
@@ -31,16 +31,20 @@ function App() {
     setNote(filterNotes)
   }
 
+  const getActiveNote = (): (Note | undefined) => {
+    return notes.find((note: Note) => note.id === activeNote)
+  }
+
   return (
     <div className="App">
       <Sidebar
-        onAddNote={onAddNote}
+        onAddNote={ onAddNote }
         notes={notes}
-        onDeleteNote={onDeleteNote}
+        onDeleteNote={ onDeleteNote}
         setActiveNote={ setActiveNote }
         activeNote={ activeNote }
       />
-      <Main />
+      <Main activeNote={ getActiveNote() } />
     </div>
   )
 }
