@@ -13,6 +13,7 @@ export type Note = {
 
 function App() {
   const [notes, setNote] = useState<Note[]>([])
+  const [activeNote, setActiveNote] = useState<string | boolean>(false)
 
   const onAddNote = (): void => {
     const newNote: Note = {
@@ -36,6 +37,8 @@ function App() {
         onAddNote={onAddNote}
         notes={notes}
         onDeleteNote={onDeleteNote}
+        setActiveNote={ setActiveNote }
+        activeNote={ activeNote }
       />
       <Main />
     </div>

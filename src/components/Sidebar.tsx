@@ -1,7 +1,7 @@
 import './Sidebar.css';
 import { Note } from '../App';
 
-const Sidebar = ({onAddNote, notes, onDeleteNote}: any): JSX.Element => {
+const Sidebar = ({onAddNote, notes, onDeleteNote, setActiveNote, activeNote}: any): JSX.Element => {
   return (
     <div className='app-sidebar'>
       <div className='app-sidebar-header'>
@@ -11,7 +11,11 @@ const Sidebar = ({onAddNote, notes, onDeleteNote}: any): JSX.Element => {
       <div className="app-sidebar-notes">
         {notes.map((note: Note) => {
           return (
-            <div key={note.id} className="app-sidebar-note">
+            <div
+              key={note.id}
+              className={`app-sidebar-note ${note.id === activeNote && "active"}`}
+              onClick={() => setActiveNote(note.id)}
+            >
               <div className="sidebar-note-title">
                 <strong>{ note.title }</strong>
                 <button onClick={() => onDeleteNote(note.id)}>Del</button>

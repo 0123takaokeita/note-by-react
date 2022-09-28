@@ -36,6 +36,10 @@
     background-color: #363636;
 }
 
+.app-sidebar-note.active {
+    background-color: #363636;
+}
+
 .sidebar-note-title {
     display: flex;
     justify-content: space-between;
