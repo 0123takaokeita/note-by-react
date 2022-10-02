@@ -8,7 +8,7 @@ export type Note = {
     id: string ,
     title: string,
     content: string,
-    modDate: string,
+    modDate: Date,
 }
 
 function App() {
@@ -18,9 +18,9 @@ function App() {
   const onAddNote = (): void => {
     const newNote: Note = {
       id: uuid(),
-      title: 'new note',
-      content: 'new note content',
-      modDate: new Date().toLocaleString('ja-JP'),
+      title: '',
+      content: '',
+      modDate: new Date(),
     }
 
     setNote([...notes, newNote])
@@ -35,16 +35,25 @@ function App() {
     return notes.find((note: Note) => note.id === activeNote)
   }
 
+  const onUpdateNote = (updatedNote: any)  => {
+    const updatedNotes = notes.map((note) => {
+      return (note.id === updatedNote.id) ?  updatedNote :  note
+    })
+    setNote(updatedNotes)
+  }
+
   return (
     <div className="App">
       <Sidebar
-        onAddNote={ onAddNote }
         notes={notes}
+        activeNote={ activeNote }
+        onAddNote={ onAddNote }
         onDeleteNote={ onDeleteNote}
         setActiveNote={ setActiveNote }
-        activeNote={ activeNote }
       />
-      <Main activeNote={ getActiveNote() } />
+      <Main
+      activeNote={ getActiveNote() }
+      onUpdateNote={ onUpdateNote }/>
     </div>
   )
 }

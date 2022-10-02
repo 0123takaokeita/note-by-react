@@ -2,6 +2,9 @@ import './Sidebar.css';
 import { Note } from '../App';
 
 const Sidebar = ({onAddNote, notes, onDeleteNote, setActiveNote, activeNote}: any): JSX.Element => {
+
+  const sortedNotes = notes.sort((a :any, b: any) => b.modDate.getTime() - a.modDate.getTime())
+
   return (
     <div className='app-sidebar'>
       <div className='app-sidebar-header'>
@@ -9,7 +12,7 @@ const Sidebar = ({onAddNote, notes, onDeleteNote, setActiveNote, activeNote}: an
         <button onClick={onAddNote}>Add</button>
       </div>
       <div className="app-sidebar-notes">
-        {notes.map((note: Note) => {
+        {sortedNotes.map((note: Note) => {
           return (
             <div
               key={note.id}
@@ -21,7 +24,7 @@ const Sidebar = ({onAddNote, notes, onDeleteNote, setActiveNote, activeNote}: an
                 <button onClick={() => onDeleteNote(note.id)}>Del</button>
               </div>
                 <p>{ note.content }</p>
-                <small>{ note.modDate }</small>
+                <small>{ note.modDate.toLocaleString('ja-JP') }</small>
             </div>
           )
         })}
