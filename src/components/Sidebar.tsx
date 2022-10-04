@@ -2,8 +2,7 @@ import './Sidebar.css';
 import { Note } from '../App';
 
 const Sidebar = ({onAddNote, notes, onDeleteNote, setActiveNote, activeNote}: any): JSX.Element => {
-
-  const sortedNotes = notes.sort((a :any, b: any) => b.modDate.getTime() - a.modDate.getTime())
+  const sortedNotes = notes.sort()
 
   return (
     <div className='app-sidebar'>

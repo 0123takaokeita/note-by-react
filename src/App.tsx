@@ -1,7 +1,7 @@
 import './App.css'
 import Sidebar from './components/Sidebar'
 import Main from './components/Main'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import uuid from 'react-uuid';
 
 export type Note = {
@@ -12,8 +12,13 @@ export type Note = {
 }
 
 function App() {
-  const [notes, setNote] = useState<Note[]>([])
+  const defNote = JSON.parse(localStorage.getItem('notes') || '')
+  const [notes, setNote] = useState<Note[]>(defNote || [])
   const [activeNote, setActiveNote] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }, [notes])
 
   const onAddNote = (): void => {
     const newNote: Note = {
