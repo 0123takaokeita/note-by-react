@@ -20,6 +20,13 @@ function App() {
     localStorage.setItem('notes', JSON.stringify(notes))
   }, [notes])
 
+  /**
+   * 先頭の note を選択状態で表示する。
+   */
+  useEffect(() => {
+    setActiveNote(notes[0]?.id)
+  }, [])
+
   const onAddNote = (): void => {
     const newNote: Note = {
       id: uuid(),
